@@ -1,0 +1,22 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "Categories", pageTitle: "Categories Page", pathLevel: "/"}) %>
+<div class="mx-5 my-4">
+<%if(oneCategory.length > 0) {%>
+    <table class="table">
+        <tr>
+            <th>Category id</th>
+            <th><%= oneCategory[0].id %></th>  
+        </tr>
+        <tr>
+            <th>Category name</th>
+            <th><%= oneCategory[0].catName %></th>   <!-- oneCategory is array [0] -->
+        </tr>
+        
+    </table>
+<%}
+else {%>
+    <h3>No project with this information !!!</h3>
+<%}%>
+</div>
+
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel : "/"}) %>

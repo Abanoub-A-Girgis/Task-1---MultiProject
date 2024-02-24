@@ -1,0 +1,27 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "catprj", pageTitle: "catprj Page", pathLevel: "/"}) %>
+<div class="mx-5 my-4">
+  <h3>Create New Category_Project</h3>
+  <form action="./store" method="post">
+    <div>
+      <label for="catId">Select a Category:</label>
+      <select name="catId" id="catId">
+        <% categories.forEach(category => { %>
+          <option value="<%= category.id %>"><%= category.catName %></option>
+        <% }); %>
+      </select>
+    </div>
+    <div>
+      <label for="projId">Select a Project:</label>
+      <select name="projId" id="projId">
+        <% projects.forEach(project => { %>
+          <option value="<%= project.id %>"><%= project.title %></option>
+        <% }); %>
+      </select>
+    </div>
+    <div>
+      <input type="submit" value="Create New Category_Project" class="mt-2 btn btn-primary" />
+    </div>
+  </form>
+</div>
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel : "/"}) %>

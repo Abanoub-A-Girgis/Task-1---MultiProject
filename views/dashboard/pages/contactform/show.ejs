@@ -1,0 +1,39 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "ContactForm", pageTitle: "Banner Page", pathLevel: "/"}) %>
+
+<h3>
+    <a href="/dashboard/contactform">back</a>
+</h3>
+
+<div class="mx-5 my-4">
+<%if(oneMessage.length > 0) {%>
+    <table border width="100%">
+        <tr>
+            <th>fullName</th>
+            <th><%= oneMessage[0].fullName %></th>
+            
+        </tr>
+        <tr>
+            <th>subject</th>
+            <th><%= oneMessage[0].subject %></th>
+            
+        </tr>
+        <tr>
+            <th>email</th>
+            <th><%= oneMessage[0].email %></th>
+        </tr>
+        <tr>
+            <th>Message</th>
+            <th>
+                <%= oneMessage[0].message %> 
+            </th>
+        </tr>
+        
+    </table>
+<%}
+else {%>
+    <h3>No message with this information !!!</h3>
+<%}%>
+</div>
+
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel : "/"}) %>

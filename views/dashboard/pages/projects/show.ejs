@@ -1,0 +1,33 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "Projects", pageTitle: "Projects Page", pathLevel: "/"}) %>
+<div class="mx-5 my-4">
+<%if(oneProject.length > 0) {%>
+    <table class="table">
+        <tr>
+            <th>Project id</th>
+            <th><%= oneProject[0].id %></th>  
+        </tr>
+        <tr>
+            <th>Project name</th>
+            <th><%= oneProject[0].title %></th>   <!-- oneProject is array [0] -->
+            <th rowspan="3">
+                <img src="/img/uploads/<%=oneProject[0].photo%>" width="250" alt="">
+            </th>
+        </tr>
+        <tr>
+            <th>Project description</th>
+            <th><%= oneProject[0].description %></th>
+        </tr>
+        <tr>
+            <th>Project photo</th>
+            <th><img src="/uploads/<%=oneProject[0].photo %>" alt="image"></th>
+        </tr>
+        
+    </table>
+<%}
+else {%>
+    <h3>No project with this information !!!</h3>
+<%}%>
+</div>
+
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel : "/"}) %>

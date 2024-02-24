@@ -1,0 +1,23 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "Categories", pageTitle: "Category Page", pathLevel: "/"}) %>
+<div class="mx-5 my-4">
+<h3>Edit Category</h3>
+
+<table>
+    <tr>
+        <td>
+            <form action="../update" method="post">
+                <label for="catName">Category Name</label>
+                <input type="text" name="catName" id="catName" value="<%= oneCategory[0].catName %>"/>
+                <br />
+
+                <input type="hidden" name="id" value="<%= oneCategory[0].id %>">
+
+                <input type="submit" value="Update Project" class="mt-2 btn btn-primary">
+            </form>
+        </td>
+    </tr>
+</table>
+</div>
+
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel : "/"}) %>

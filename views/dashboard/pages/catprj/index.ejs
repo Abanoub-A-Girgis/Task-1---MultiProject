@@ -1,0 +1,47 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "catprj", pageTitle: "catprj Page", pathLevel: "/"}) %>
+
+  <div class="mx-5 my-4">
+  <a href="/dashboard/catprj/createForm" class="btn btn-success mb-1" style="display: block; width: fit-content; margin-left: auto;"><i class="fa-solid fa-plus" style="margin-right: 0.5rem;"></i>Add New</a>
+
+  <%if(catprjs.length > 0){%>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>Category Name</th><th>Project Name</th><th>Operations</th>
+        </tr>    
+        <% catprjs.forEach((oneCatprj) => { %>
+            <tr>
+                <th><%= categories.find(category => category.id === oneCatprj.catId)?.catName %></th>
+                <th><%= projects.find(project => project.id === oneCatprj.projId)?.title %></th>
+                <th>
+                    <a href="/dashboard/catprj/show/<%=oneCatprj.catId%>/<%=oneCatprj.projId%>">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="/dashboard/catprj/updateForm/<%=oneCatprj.catId%>/<%=oneCatprj.projId%>">
+                        <i class="fa-solid fa-pencil" style="color: #FFA500;"></i>
+                    </a>
+                    &nbsp;&nbsp;&nbsp;
+                    <span onclick="destroy(this);" catprjId="<%=oneCatprj.catId%>" projId="<%=oneCatprj.projId%>" style="cursor: pointer;">
+                        <i class="fa-solid fa-trash-can" style="color: #e66565;"></i>
+                    </span>
+                </th>
+            </tr>
+        <% }); %>
+    </table>
+<%}
+else {%>
+    <h3>No Category_Project created yet !!!!</h3>
+<%}%>
+</div>
+
+<script>
+    function destroy(obj){
+        if(confirm("Are You Sure you want to Delete this Category_Project ?")) {
+            catId = obj.getAttribute("catprjId");
+            projId = obj.getAttribute("projId");
+            window.location.replace("/dashboard/catprj/destroy/" + catId + "/" + projId);
+        }        
+    }
+</script>
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel: "/" }) %>

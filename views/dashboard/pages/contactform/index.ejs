@@ -1,0 +1,46 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "ContactForm", pageTitle: "ContactForm Page", pathLevel: "/"}) %>
+
+<div class="mx-5 my-4">
+<%if(messages.length > 0){%>
+    <table border style="width: 100%">
+        <tr>
+            <th>Slide Title</th><th>Details</th><th>Operations</th>
+        </tr>    
+        <% messages.forEach((oneMessage) => { %>
+            <%if(oneMessage.isRead == 0) {%>
+                <tr style="color: blue; font-weight: bolder !important; font-size: 20px;">
+            <%} else {%>
+                <tr style="color: gray; font-weight: normal !important; font-size: 20px;">
+            <%}%>
+                <th><%= oneMessage.fullName %></th>
+                <th><%= oneMessage.subject %></th>
+                <th>
+                    <a href="/dashboard/contactform/show/<%=oneMessage.id%>">
+                        Details
+                    </a>
+                                      
+                    &nbsp;&nbsp;&nbsp;
+                    
+                    <span onclick="destroy(this);" productID="<%=oneMessage.id%>" style="cursor: pointer;">
+                        Delete
+                    </span>
+                </th>
+            </tr>
+        <% }); %>
+    </table>
+<%}
+else {%>
+    <h3>No products created yet !!!!</h3>
+<%}%>
+</div>
+
+<script>
+    function destroy(obj){
+        if(confirm("Are You Sure you want to Delete this Product ?")) {
+            id = obj.getAttribute("productID");
+            window.location.replace("/dashboard/contactform/destroy/" + id);
+        }        
+    }
+</script>
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel: "/" }) %>

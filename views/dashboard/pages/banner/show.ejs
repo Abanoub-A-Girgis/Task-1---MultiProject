@@ -1,0 +1,25 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "banner", pageTitle: "Banner Page", pathLevel: "/"}) %>
+
+<div class="mx-5 my-4">
+<%if(oneSlide.length > 0) {%>
+    <table class="table" width="100%">
+        <tr>
+            <th>Title</th>
+            <th><%= oneSlide[0].title %></th>   <!-- oneProduct is array [0] -->
+            <th rowspan="3">
+                <img src="../../../uploads/<%=oneSlide[0].photo%>" width="450" alt="">
+            </th>
+        </tr>
+        <tr>
+            <th>Details</th>
+            <th><%= oneSlide[0].details %></th>
+        </tr>
+        
+    </table>
+<%}
+else {%>
+    <h3>No slides with this information !!!</h3>
+<%}%>
+</div>
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel : "/"}) %>

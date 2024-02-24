@@ -1,0 +1,37 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "catprj", pageTitle: "catprj Page", pathLevel: "/"}) %>
+<div class="mx-5 my-4">
+<h3>Edit Category_Project</h3>
+
+<table>
+    <tr>
+        <td>
+            <form action="../../update" method="post">
+                <div>
+                    <label for="catId">Select a Category:</label>
+                    <select name="catId" id="catId">
+                      <% categories.forEach(category => { %>
+                        <option value="<%= category.id %>" <% if (onecatprj[0].catId == category.id) { %> selected <% } %>><%= category.catName %></option>
+                      <% }); %>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="projId">Select a Project:</label>
+                    <select name="projId" id="projId">
+                      <% projects.forEach(project => { %>
+                        <option value="<%= project.id %>" <% if (onecatprj[0].projId == project.id ) { %> selected <% } %> ><%= project.title %></option>
+                      <% }); %>
+                    </select>
+                  </div>
+
+                <input type="hidden" name="OldcategoryId" value="<%= onecatprj[0].catId %>">
+                <input type="hidden" name="OldprojectId" value="<%= onecatprj[0].projId %>">
+
+                <input type="submit" value="Update Project" class="mt-2 btn btn-primary">
+            </form>
+        </td>
+    </tr>
+</table>
+</div>
+
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel : "/"}) %>

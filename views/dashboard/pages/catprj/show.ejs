@@ -1,0 +1,22 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "catprj", pageTitle: "catprj Page", pathLevel: "/"}) %>
+<div class="mx-5 my-4">
+<%if(onecatprj.length > 0) {%>
+    <table class="table">
+        <tr>
+            <th>Category id</th>
+            <th><%= category[0].catName %></th>  
+        </tr>
+        <tr>
+            <th>Project id</th>
+            <th><%= project[0].title %></th>
+        </tr>
+        
+    </table>
+<%}
+else {%>
+    <h3>No project with this information !!!</h3>
+<%}%>
+</div>
+
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel : "/"}) %>
